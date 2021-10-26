@@ -107,26 +107,67 @@ Coloriamo le icone per tipo
 let totTypes = [];
 
 //interate for each array's object
-icons.forEach(icon => {
+icons.forEach((icon, index) => {
 	
-	//insert html structure
-	const cardsHTML = `<div class="col card text-center p-3">
-	<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x" data-type="${icon.type}"></i>
-	<div class="icon_name mt-3">${icon.name}</div>
-	</div>
-	`
-	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
-
 	//push each type in array without duplicates
 	if (!totTypes.includes(icon.type)){
 		totTypes.push(icon.type);
 	}
 
+	let cardsHTML = `<div class="col card text-center p-3">
+	<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x"></i>
+	<div class="icon_name mt-3">${icon.name}</div>
+	</div>
+	`;
+	// console.log(icon.type);
+
+	if (icon.type == 'animal'){
+		//insert html structure
+		cardsHTML = `<div class="col card text-center p-3">
+		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x animal"></i>
+		<div class="icon_name mt-3">${icon.name}</div>
+		</div>
+		`
+	} else if (icon.type == 'vegetable'){
+		cardsHTML = `<div class="col card text-center p-3">
+		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x vegetable"></i>
+		<div class="icon_name mt-3">${icon.name}</div>
+		</div>
+		`
+	} else if (icon.type == 'user'){
+		cardsHTML = `<div class="col card text-center p-3">
+		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x user"></i>
+		<div class="icon_name mt-3">${icon.name}</div>
+		</div>
+		`
+	}
+	
+	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
 });
 
 //select all html elements with data-type attribute which corresponds to one of types listed in icons objects.
 
+/* console.log(totTypes);
+let typeClasses = [];
 totTypes.forEach(element => {
-	console.log(document.querySelectorAll(`i[data-type='${element}']`));
+	const HTMLel = document.querySelectorAll(`i[data-type='${element}']`);
+	console.log(HTMLel);
+	// console.log(HTMLel);
+	typeClasses.push(HTMLel);
+	//for type i need a different class/style.
 	
 })
+
+typeClasses[0].className = 'blue_icon'; */
+
+// console.log(typeClasses[0]);
+/* for (let i = 0; i < typeClasses.length; i++) {
+	const element = typeClasses[i];
+	
+} */
+
+
+/* typeClasses = document.querySelectorAll(`i[data-type='${totTypes[0]}']`);
+console.log(typeClasses); */
+
+

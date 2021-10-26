@@ -1,6 +1,9 @@
 :root{
     --color_1: #29B1DD;
-    --color_2: #DDDDDD
+    --color_2: #DDDDDD;
+    --animal: #2B02FD;
+    --vegetable: #FFA524;
+    --user: #800080 ;
 }
 .logo{
     font-weight: 700;
@@ -12,7 +15,6 @@ nav {
     color: white;
     text-align: center;
     padding: 1rem 0;
-    text-transform: uppercase;
 }
 main{
     background-color: var(--color_2);
@@ -20,4 +22,18 @@ main{
 }
 .container-fluid{
     height: 100%;
+}
+
+.icon_name, nav{
+    text-transform: uppercase;
+}
+
+.animal{
+    color: var(--animal);
+}
+.vegetable{
+    color: var(--vegetable);
+}
+.user{
+    color: var(--user);
 }
