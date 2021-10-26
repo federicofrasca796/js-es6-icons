@@ -117,7 +117,11 @@ icons.forEach(icon => {
 	`
 	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
 
-	iconsTypes.push(icon.type);
+	//push each type in array without duplicates
+	if (!iconsTypes.includes(icon.type)){
+		iconsTypes.push(icon.type);
+	}
+
 });
 
 //select all html elements with data-type attribute which corresponds to one of types listed in icons objects.
