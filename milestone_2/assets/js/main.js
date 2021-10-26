@@ -104,7 +104,7 @@ Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disp
 Coloriamo le icone per tipo
 */
 
-let iconsTypes = [];
+let totTypes = [];
 
 //interate for each array's object
 icons.forEach(icon => {
@@ -118,17 +118,15 @@ icons.forEach(icon => {
 	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
 
 	//push each type in array without duplicates
-	if (!iconsTypes.includes(icon.type)){
-		iconsTypes.push(icon.type);
+	if (!totTypes.includes(icon.type)){
+		totTypes.push(icon.type);
 	}
 
 });
 
 //select all html elements with data-type attribute which corresponds to one of types listed in icons objects.
 
-//create an array containing every icon type
-console.log(iconsTypes);
-
-
-
-
+totTypes.forEach(element => {
+	console.log(document.querySelectorAll(`i[data-type='${element}']`));
+	
+})
