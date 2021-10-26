@@ -104,76 +104,59 @@ Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disp
 Coloriamo le icone per tipo
 */
 
-//let totTypes = []; DISCARDED APPROACH
+genCard(icons);
 
-//interate for each array's object
-icons.forEach((icon, index) => {
-	
-	/* DISCARDED APPROACH
- 	//push each type in array without duplicates
-	if (!totTypes.includes(icon.type)){
-		totTypes.push(icon.type);
-	} */
 
-	let cardsHTML = `<div class="col card text-center p-3">
-	<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x"></i>
-	<div class="icon_name mt-3">${icon.name}</div>
-	</div>
-	`;
 
-	if (icon.type == 'animal'){
+
+
+
+
+/**
+ * Prints card inside of a bootstrap .row class. Card contains an icon and its name.
+ * @param {Array} iconsArr Array of Objects
+ */
+function genCard(iconsArr){
+	icons.forEach(icon => {
+
+		let cardsHTML = `<div class="col card text-center p-3">
+		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x"></i>
+		<div class="icon_name mt-3">${icon.name}</div>
+		</div>
+		`;
+		
+		cardsHTML = typeColor(icon);
+		
+		document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
+	});
+}
+
+/**
+ * 
+ * @param {Object} iconObj Takes 
+ * @returns 
+ */
+function typeColor(iconObj){
+	if (iconObj.type == 'animal'){
 		//insert html structure
 		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x animal"></i>
-		<div class="icon_name mt-3">${icon.name}</div>
+		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x animal"></i>
+		<div class="icon_name mt-3">${iconObj.name}</div>
 		</div>
 		`
-	} else if (icon.type == 'vegetable'){
+	} else if (iconObj.type == 'vegetable'){
 		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x vegetable"></i>
-		<div class="icon_name mt-3">${icon.name}</div>
+		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x vegetable"></i>
+		<div class="icon_name mt-3">${iconObj.name}</div>
 		</div>
 		`
-	} else if (icon.type == 'user'){
+	} else if (iconObj.type == 'user'){
 		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x user"></i>
-		<div class="icon_name mt-3">${icon.name}</div>
+		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x user"></i>
+		<div class="icon_name mt-3">${iconObj.name}</div>
 		</div>
 		`
 	}
-	
-	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
-});
 
-
-
-
-
-
-//DISCARDED APPROACH
-//select all html elements with data-type attribute which corresponds to one of types listed in icons objects.
-
-/* console.log(totTypes);
-let typeClasses = [];
-totTypes.forEach(element => {
-	const HTMLel = document.querySelectorAll(`i[data-type='${element}']`);
-	console.log(HTMLel);
-	// console.log(HTMLel);
-	typeClasses.push(HTMLel);
-	//for type i need a different class/style.
-	
-})
-
-typeClasses[0].className = 'blue_icon'; */
-
-// console.log(typeClasses[0]);
-/* for (let i = 0; i < typeClasses.length; i++) {
-	const element = typeClasses[i];
-	
-} */
-
-
-/* typeClasses = document.querySelectorAll(`i[data-type='${totTypes[0]}']`);
-console.log(typeClasses); */
-
-
+	return cardsHTML;
+}
