@@ -1,0 +1,39 @@
+:root{
+    --color_1: #29B1DD;
+    --color_2: #DDDDDD;
+    --animal: #2B02FD;
+    --vegetable: #FFA524;
+    --user: #800080 ;
+}
+.logo{
+    font-weight: 700;
+    color: var(--color_1);
+}
+
+nav {
+    background-color: var(--color_1);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+main{
+    background-color: var(--color_2);
+    height: calc(100vh - 110px);
+}
+.container-fluid{
+    height: 100%;
+}
+
+.icon_name, nav{
+    text-transform: uppercase;
+}
+
+.animal{
+    color: var(--animal);
+}
+.vegetable{
+    color: var(--vegetable);
+}
+.user{
+    color: var(--user);
+}
