@@ -101,3 +101,16 @@ const icons = [
 Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
 */
 
+//interate for each array's object
+icons.forEach(icon => {
+	
+	//insert html structure
+	const cardsHTML = `<div class="col card text-center p-3">
+	<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x"></i>
+	<div class="icon_name mt-3">${icon.name}</div>
+	</div>
+	`
+	document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML)
+});
+
+
