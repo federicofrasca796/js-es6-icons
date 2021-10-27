@@ -108,10 +108,6 @@ genCard(icons);
 
 
 
-
-
-
-
 /**
  * Prints card inside of a bootstrap .row class. Card contains an icon and its name.
  * @param {Array} iconsArr Array of Objects
@@ -120,43 +116,11 @@ function genCard(iconsArr){
 	icons.forEach(icon => {
 
 		let cardsHTML = `<div class="col card text-center p-3">
-		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x"></i>
+		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x ${icon.type}"></i>
 		<div class="icon_name mt-3">${icon.name}</div>
 		</div>
 		`;
-		
-		cardsHTML = typeColor(icon);
-		
+			
 		document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
 	});
-}
-
-/**
- * 
- * @param {Object} iconObj Takes 
- * @returns 
- */
-function typeColor(iconObj){
-	if (iconObj.type == 'animal'){
-		//insert html structure
-		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x animal"></i>
-		<div class="icon_name mt-3">${iconObj.name}</div>
-		</div>
-		`
-	} else if (iconObj.type == 'vegetable'){
-		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x vegetable"></i>
-		<div class="icon_name mt-3">${iconObj.name}</div>
-		</div>
-		`
-	} else if (iconObj.type == 'user'){
-		cardsHTML = `<div class="col card text-center p-3">
-		<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x user"></i>
-		<div class="icon_name mt-3">${iconObj.name}</div>
-		</div>
-		`
-	}
-
-	return cardsHTML;
 }
