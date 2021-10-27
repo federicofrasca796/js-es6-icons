@@ -104,7 +104,61 @@ Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disp
 Coloriamo le icone per tipo
 */
 
-genCard(icons);
+
+
+//generate icon cards through custom function
+let cardsHTML = printCard(icons);
+
+/* Milestone 3
+Creiamo una select con i tipi di icone e usiamola per filtrare le icone 
+*/
+
+//generate option tag in DOM with each type of icon
+const iconsTypes = [];
+
+icons.forEach(icon => {
+	if(!iconsTypes.includes(icon.type)){
+		iconsTypes.push(icon.type);
+	}
+})
+
+// console.log(iconsTypes);
+
+//select 'select' element in DOM
+const selectEl = document.getElementById('filter');
+
+//generate option tag
+iconsTypes.forEach(type =>{
+	const optionEl = `<option value="${type}">${type}</option>`;
+	selectEl.insertAdjacentHTML('beforeend', optionEl);
+})
+
+//add event listener on select change
+selectEl.addEventListener('change', function () {
+	
+	document.querySelector('.row').innerHTML = '';
+
+	//if ALL is selected
+	if (this.value === 'All'){
+		printCard(icons);
+	}
+
+	//if other options are selected
+	const selectedIcons = icons.filter (icon => {
+		return icon.type === this.value;
+	})
+	console.log(selectedIcons);
+	printCard(selectedIcons);
+})
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,15 +166,20 @@ genCard(icons);
  * Prints card inside of a bootstrap .row class. Card contains an icon and its name.
  * @param {Array} iconsArr Array of Objects
  */
-function genCard(iconsArr){
-	icons.forEach(icon => {
+function printCard(iconsArr){
+	iconsArr.forEach(icon => {
 
-		let cardsHTML = `<div class="col card text-center p-3">
-		<i class="${icon.family} ${icon.prefix}${icon.name} ${icon.prefix}2x ${icon.type}"></i>
-		<div class="icon_name mt-3">${icon.name}</div>
-		</div>
-		`;
+		const cardsHTML = genCardHTML(icon);
 			
 		document.querySelector('.row-cols-5').insertAdjacentHTML('beforeend', cardsHTML);
+
 	});
+}
+
+function genCardHTML(iconObj){
+	return `<div class="col card text-center p-3">
+	<i class="${iconObj.family} ${iconObj.prefix}${iconObj.name} ${iconObj.prefix}2x ${iconObj.type}"></i>
+	<div class="icon_name mt-3">${iconObj.name}</div>
+	</div>
+	`;
 }
